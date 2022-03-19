@@ -149,6 +149,19 @@ const reducer = (state, action)=>{
             })
         }
         break;
+        case 'Add__user':{
+            return({
+                ...state,
+                user: action.name
+            })
+        }
+        break;
+        case 'Remove__user':{
+            return({
+                ...state,
+                user: null
+            })
+        }
         default: return state;
     }
 }
