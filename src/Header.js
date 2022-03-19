@@ -1,13 +1,29 @@
 import React from 'react'
 import './Header.css';
 import HomeIcon from '@material-ui/icons/Home';
-import {Link} from "react-router-dom";
+import {Link,useHistory} from "react-router-dom";
+import {useStateValue} from './StateProvider';
+
 
 function Header() {
+  const history = useHistory();
+  function handleClick(event){
+    console.log(event.target.innerHTML);
+    if(event.target.innerHTML == 'Sign out'){
+      dispatch({
+        type: 'Remove__user'
+      })
+      history.replace("/");
+    }
+    else{
+      history.push("/login");
+    }
+  }
+  const [{user},dispatch] = useStateValue();
   return (
     <div className='header'>
       <Link to = "/">
-        <img className='header__image' src = "https://freesvg.org/img/hotpopcornmovie.png"/>
+        <img className='header__image' src ='../hotpopcornmovie.png'/>
         </Link>
         <input type='text' className='header__input' placeholder = "search the movies"></input>
         <button className='header__search__button'>Search</button>
@@ -20,9 +36,10 @@ function Header() {
                 <option value = "chennai">Chennai</option>
                 <option value = "bangalore">Bangalore</option>
             </select>
-            <Link to = "/login">
-            <button className='header__button'>Sign in</button>
-            </Link>
+            
+            <button name = 'header__button' className='header__button' onClick={handleClick}>{user? 'Sign out':'Sign in'}</button>
+            
+            
           </div>
     </div>
   )

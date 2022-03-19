@@ -42,7 +42,7 @@ function Login() {
               });
               navigate.push("/");
             } else {
-              alert("There is an account already linked with the same username.");
+              alert("There is an account already linked with the same username "+data.uname);
             }
           });
       }
@@ -53,10 +53,12 @@ function Login() {
             .then((res) => res.json())
             .then(data=>{
                 if(data.status === 'success'){
+                  console.log(data.uname);
                   dispatch({
                     type: 'Add__user',
-                    name: data.user
+                    name: data.uname
                   });
+                  
                   navigate.push('/');
                 } else{
                     if(data.status === "failure")
@@ -78,10 +80,10 @@ function Login() {
   return <div className='login'>
     <Link to='/'>
       <img className='login__logo'
-        src="https://freesvg.org/img/hotpopcornmovie.png" />
+        src="../hotpopcornmovie.png" />
     </Link>
     <div className='login__container'>
-      <h1>Sign-in</h1>
+      <h1>Sign-in/Sign-up</h1>
       <form onSubmit={handleSubmit}>
         <h5>E-mail</h5>
         <input type="text" name="username" />
@@ -97,7 +99,7 @@ function Login() {
       </form>
     </div>
 
-  </div>;
+  </div>
 
 }
 

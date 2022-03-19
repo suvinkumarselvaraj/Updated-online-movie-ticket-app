@@ -12,6 +12,7 @@ import Payment from './Payment';
 import { StateProvider, useStateValue } from './StateProvider';
 import CardElement from './CardElement';
 import Login from './Login';
+import CompletePayment from './CompletePayment';
 
 function App() {
 
@@ -53,11 +54,16 @@ function App() {
             
             <Login />
           </Route>
+          <Route path = "/complete/payment">
+            <Header />
+            <CompletePayment />
+          </Route>
           <Route path = "/">
           <Header></Header>
           <Home />
           <Footer></Footer>
           </Route>
+         
           </Switch>
     </div>
     </Router>

@@ -75,7 +75,7 @@ export const initialSeatState = {
 };
 
 const reducer = (state, action)=>{
-    {console.log(action.theatre__info)}
+    {console.log(action.name)}
     switch(action.type){
         case 'Add_movie_name':
             return{
@@ -121,7 +121,7 @@ const reducer = (state, action)=>{
              console.log(state.seat__array);
             const index = state.seat__array.findIndex((seat) => seat.id === action.item.id                                                               );
             console.log(index);
-            if(index >=0)
+            if(index>=0)
             {
                 console.log(index);
                 new__seat__array.splice(index,1);
@@ -159,7 +159,7 @@ const reducer = (state, action)=>{
         case 'Remove__user':{
             return({
                 ...state,
-                user: null
+                user:null
             })
         }
         default: return state;

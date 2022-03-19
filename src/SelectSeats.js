@@ -9,17 +9,21 @@ function SelectSeats() {
     var count = 0;
         var eachPersonCount=0;
     const [count__seats,setCount] = useState(0);
-    const [{seat__array,movie__clicked,movies}, dispatch] = useStateValue();
+    const [{seat__array,movie__clicked,movies, user}, dispatch] = useStateValue();
    
     function handleClick(event){
         console.log(seat__array.length);
         var len = seat__array?.length;
-        if(len > 0){
-            
+        if(len > 0 && user){
             navigate.push("/movies/payment");
         }
         else
+        if(len == 0 && user){
         alert('Please select your seats before proceeding');
+        }
+        else{
+            alert("signin to proceed further");
+        }
 
     }
     function changeColor(event){
